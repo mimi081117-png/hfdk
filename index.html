@@ -75,7 +75,6 @@
         .activation-btn:hover { background: #f59e0b; }
         .status-message { margin-top: 10px; font-size: 0.85rem; font-weight: bold; text-align: center; }
 
-        /* صندوق معلومات الاشتراك الجديد */
         .subscription-info-box {
             display: none;
             background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
@@ -89,10 +88,10 @@
         .subscription-info-box h4 { margin: 0 0 8px 0; color: #fff; font-size: 1.1rem; }
         .sub-timer { font-size: 1.2rem; font-weight: bold; color: var(--vip-gold); letter-spacing: 1px; margin-top: 5px; display: block; }
 
-        .contact-buttons { display: flex; gap: 10px; margin-bottom: 25px; width: 100%; }
-        .btn-contact { flex: 1; padding: 12px; border-radius: 10px; text-align: center; font-weight: bold; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; }
-        .btn-telegram { background: #0088cc; color: #fff; }
-        .btn-whatsapp { background: #25d366; color: #fff; }
+        .contact-buttons { display: flex; margin-bottom: 25px; width: 100%; }
+        .btn-contact { flex: 1; padding: 12px; border-radius: 10px; text-align: center; font-weight: bold; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; }
+        .btn-telegram { background: #0088cc; color: #fff; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4); }
+        .btn-telegram:hover { background: #0077b3; }
 
         .day-title {
             background: linear-gradient(90deg, #1f2937 0%, #111827 100%);
@@ -107,9 +106,12 @@
             justify-content: space-between;
             align-items: center;
         }
-        .day-title.today { border-right-color: var(--live-red); }
-        .day-title.tomorrow { border-right-color: var(--primary-blue); }
-        .day-title.june9 { border-right-color: var(--vip-gold); }
+        .day-title.tuesday { border-right-color: var(--live-red); }
+        .day-title.wednesday { border-right-color: var(--primary-blue); }
+        .day-title.thursday { border-right-color: var(--vip-gold); }
+        .day-title.friday { border-right-color: #a855f7; }
+        .day-title.saturday { border-right-color: #06b6d4; }
+        .day-title.sunday { border-right-color: #ec4899; }
         .day-badge-count { font-size: 0.8rem; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 20px; }
 
         .match-card { background: var(--card-bg); padding: 15px; border-radius: 14px; margin-bottom: 15px; border: 1px solid var(--border-color); position: relative; }
@@ -119,7 +121,6 @@
         .vip-card-badge { font-size: 0.7rem; background: var(--vip-gold); color: #000; padding: 2px 6px; border-radius: 4px; margin-right: 5px; font-weight: bold; }
         .free-card-badge { font-size: 0.7rem; background: var(--green-success); color: #fff; padding: 2px 6px; border-radius: 4px; margin-right: 5px; font-weight: bold; }
 
-        /* أزرار فتح تفاصيل المباريات بالداخل */
         .action-inside-container { text-align: center; padding: 15px 10px; background: #070a13; border-radius: 10px; border: 1px dashed #1f2937; }
         .btn-reveal { background: #1f2937; color: #fff; border: 1px solid var(--primary-blue); padding: 8px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.85rem; transition: 0.2s; }
         .btn-reveal:hover { background: var(--primary-blue); }
@@ -192,7 +193,7 @@
 
         <div class="live-notifications">
             <div class="live-dot"></div>
-            <span id="liveText">🔥 أقوى تحديث للتوقعات (Super VIP): تم فحص نسب النجاح والنتائج الصحيحة لقمم الجزائر، فرنسا، وهولندا!</span>
+            <span id="liveText">🛡️ نظام الأمان نشط: التفعيل محمي ومحفوظ بالثانية لمنع الغش وإعادة الوقت.</span>
         </div>
 
         <div class="countdown-box">
@@ -207,8 +208,7 @@
         </div>
 
         <div class="contact-buttons">
-            <a href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" class="btn-contact btn-telegram">✈️ اطلب كود تفعيل التذاكر فائقة القوة VIP</a>
-            <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="btn-contact btn-whatsapp">💬 تواصل معنا عبر واتساب فوراً</a>
+            <a href="https://t.me/talalblhrous05" target="_blank" class="btn-contact btn-telegram">✈️ تواصل معي عبر تليغرام لطلب كود تفعيل الـ VIP</a>
         </div>
 
         <div class="premium-header">
@@ -221,23 +221,41 @@
             <div id="statusMsg" class="status-message"></div>
         </div>
 
-        <div class="day-title today">
-            <span>📅 قمم وتوقعات اليــــوم النارية</span>
-            <span class="day-badge-count" id="today-count">0 مواجهات</span>
+        <div class="day-title tuesday">
+            <span>📅 قمم وتوقعات يوم الثلاثــــاء (مباريات اليوم)</span>
+            <span class="day-badge-count" id="tuesday-count">0 مواجهات</span>
         </div>
-        <div id="today-matches-container"></div>
+        <div id="tuesday-matches-container"></div>
 
-        <div class="day-title tomorrow">
-            <span>📅 قمم وتوقعات الثلاثاء 09 جوان فائقة القوة</span>
-            <span class="day-badge-count" id="tomorrow-count">0 مواجهات</span>
+        <div class="day-title wednesday">
+            <span>📅 قمم وتوقعات يوم الأربعــــاء (مباريات الغد)</span>
+            <span class="day-badge-count" id="wednesday-count">0 مواجهات</span>
         </div>
-        <div id="tomorrow-matches-container"></div>
+        <div id="wednesday-matches-container"></div>
 
-        <div class="day-title june9">
-            <span>📅 جدول مباريات الأربعاء 10 جــــوان المدمرة</span>
-            <span class="day-badge-count" id="june9-count">0 مواجهات</span>
+        <div class="day-title thursday">
+            <span>📅 جدول وتوقعات يوم الخمبــــس</span>
+            <span class="day-badge-count" id="thursday-count">0 مواجهات</span>
         </div>
-        <div id="june9-matches-container"></div>
+        <div id="thursday-matches-container"></div>
+
+        <div class="day-title friday">
+            <span>📅 جدول وتوقعات يوم الجمعــــة</span>
+            <span class="day-badge-count" id="friday-count">0 مواجهات</span>
+        </div>
+        <div id="friday-matches-container"></div>
+
+        <div class="day-title saturday">
+            <span>📅 جدول وتوقعات يوم السبــــت</span>
+            <span class="day-badge-count" id="saturday-count">0 مواجهات</span>
+        </div>
+        <div id="saturday-matches-container"></div>
+
+        <div class="day-title sunday">
+            <span>📅 جدول وتوقعات يوم الأحــــد</span>
+            <span class="day-badge-count" id="sunday-count">0 مواجهات</span>
+        </div>
+        <div id="sunday-matches-container"></div>
 
         <div class="reviews-section">
             <h4 style="margin: 0 0 12px 0; color: #fff; font-size: 1rem; border-bottom: 1px solid #1f2937; padding-bottom: 8px;">📊 نسبة نجاح باقة الـ VIP الأخيرة: 98.4%</h4>
@@ -265,70 +283,77 @@
             <div style="background: #070a13; padding: 12px; border-radius: 8px; border: 1px solid #1f2937; margin-bottom: 20px;">
                 <span style="color: var(--green-success); font-weight: bold; font-size: 0.9rem;">تفعيل فوري متاح عبر فليكسي ⚡ أو بريدي موب 📱</span>
             </div>
-            <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" style="background: var(--green-success); color: #fff; display: block; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 10px;">💬 اشترك واطلب الكود عبر واتساب</a>
-            <a href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" style="background: #0088cc; color: #fff; display: block; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold;">✈️ اشترك واطلب الكود عبر تليغرام</a>
+            <a href="https://t.me/talalblhrous05" target="_blank" style="background: #0088cc; color: #fff; display: block; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold;">✈️ اشترك واطلب الكود عبر تليغرام فوراً</a>
         </div>
     </div>
 
     <script>
-        // 🔑 قاعدة بيانات الـ 40 كود مع تحديد الساعات والدقائق لكل فئة
-        // يوم = 24 ساعة، أسبوع = 168 ساعة، شهر = 720 ساعة، سنة = 8760 ساعة
         const vipCodesDatabase = {
-            // ⏱️ باقة اليوم الواحد (24 ساعة)
             "DAY-77A2-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 }, "DAY-14B9-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 }, "DAY-98C1-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 }, "DAY-33D4-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 }, "DAY-55E8-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 },
-            "DAY-21F3-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 }, "DAY-88G6-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 }, "DAY-47H0-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 }, "DAY-62J5-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 }, "DAY-90K9-VIP": { name: "باقة اليوم الواحد VIP", hours: 24 },
-            // 📅 باقة الأسبوع الكامل (168 ساعة)
             "WEEK-10M2-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 }, "WEEK-44N8-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 }, "WEEK-89P3-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 }, "WEEK-25Q7-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 }, "WEEK-71R1-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 },
-            "WEEK-36S9-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 }, "WEEK-50T4-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 }, "WEEK-82U6-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 }, "WEEK-19V2-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 }, "WEEK-63W5-VIP": { name: "باقة الأسبوع الكامل VIP", hours: 168 },
-            // 🌙 باقة الشهر الكامل (720 ساعة)
             "MON-30X1-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 }, "MON-55Y7-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 }, "MON-88Z4-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 }, "MON-12A9-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 }, "MON-99B3-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 },
-            "MON-47C6-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 }, "MON-21D0-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 }, "MON-63E8-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 }, "MON-74F2-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 }, "MON-15G5-VIP": { name: "باقة الشهر الكامل VIP", hours: 720 },
-            // 👑 باقة السنة البريميوم الكاملة (8760 ساعة)
-            "YEAR-99H1-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-11J8-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-55K4-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-77L9-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-22M3-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 },
-            "YEAR-88N6-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-44P0-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-66Q8-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-33R2-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-11S5-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }
+            "YEAR-99H1-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-11J8-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-55K4-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-77L9-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }, "YEAR-22M3-VIP": { name: "باقة السنة الكاملة PREMIUM", hours: 8760 }
         };
 
         let isGlobalVipUnlocked = false;
-        let revealedMatches = {}; // لحفظ المعرفات التي قام المستخدم بالنقر عليها لفتحها
+        let revealedMatches = {}; 
 
-        // البيانات الكاملة للمباريات الثلاثة الجداول
-        const todayMatches = [
-            { id: 101, type: "vip", home: "هولندا", away: "أوزبكستان", time: "07:45 م", probHome: 80, probDraw: 14, probAway: 6, market1: "💥 فوز هولندا الشوط الأول واللقاء (1/1) | ODD: 1.65", market2: "🔥 إجمالي أهداف هولندا فوق 2.5 أهداف | ODD: 1.90", correctScore: "👑 النتيجة الدقيقة: 3 - 0 أو 4 - 0 | ODD: 6.50", corners: "🚀 أكثر من 9.5 ركنية (ضغط هولندي مستمر)", cards: "🟨 أقل من 3.5 بطاقات صفراء", gg: "❌ لا (كلين شيت لهولندا)" },
-            { id: 102, type: "vip", home: "فرنسا", away: "أيرلندا الشمالية", time: "08:10 م", probHome: 85, probDraw: 10, probAway: 5, market1: "💥 فرنسا هنديكاب -1.5 (فوز بفارق هدفين فما فوق) | ODD: 1.70", market2: "🔥 إجمالي أهداف المباراة فوق 2.5 أهداف | ODD: 1.55", correctScore: "👑 النتيجة الدقيقة: 3 - 0 أو 3 - 1 | ODD: 5.80", corners: "🚀 أكثر من 10.5 ركنية إجمالية", cards: "🟨 أقل من 3.5 بطاقات", gg: "❌ لا" },
-            { id: 103, type: "free", home: "موريتانيا", away: "النيجر", time: "08:00 م", probHome: 50, probDraw: 32, probAway: 18, market1: "فوز أو تعادل موريتانيا (1X) | ODD: 1.35", market2: "إجمالي أهداف اللقاء تحت 2.5 | ODD: 1.50", correctScore: "النتيجة المقترحة: 1 - 0 أو 1 - 1 | ODD: 5.00", corners: "أقل من 8.5 ركنية", cards: "أكثر من 4.5 بطاقات (اندفاع بدني)", gg: "❌ لا" }
+        // 📅 1. جدول يوم الثلاثاء
+        const tuesdayMatches = [
+            { id: 201, type: "vip", home: "روسيا", away: "ترينيداد وتوباغو", time: "06:00 م", probHome: 72, probDraw: 18, probAway: 10, market1: "💥 فوز روسيا المباشر (1) هنديكاب -1 | ODD: 1.95", market2: "🔥 مجموع أهداف اللقاء فوق 2.5 | ODD: 1.70", correctScore: "👑 النتيجة الدقيقة: 3 - 1 أو 2 - 0 | ODD: 7.00", corners: "🚀 أكثر من 9.5 ركنية لروسيا", cards: "🟨 أقل من 3.5 بطاقات", gg: "✅ نعم" },
+            { id: 202, type: "vip", home: "أفريقيا الوسطى", away: "أنغولا", time: "11:00 ص", probHome: 20, probDraw: 35, probAway: 45, market1: "💥 فوز أنغولا المباشر (2) | ODD: 2.05", market2: "🔥 إجمالي أهداف أنغولا فوق 1.5 أهداف | ODD: 2.20", correctScore: "👑 النتيجة الدقيقة: 1 - 2 لصالح أنغولا | ODD: 8.50", corners: "🚀 أكثر من 8.5 ركنية", cards: "🟨 أكثر من 4.5 بطاقات حماسية", gg: "✅ نعم" },
+            { id: 203, type: "free", home: "طاجيكستان", away: "الهند", time: "04:00 م", probHome: 40, probDraw: 35, probAway: 25, market1: "فوز أو تعادل طاجيكستان (1X) | ODD: 1.38", market2: "مجموع أهداف الشوط الأول تحت 1.5 | ODD: 1.30", correctScore: "النتيجة المقترحة: 1 - 1 أو 1 - 0 | ODD: 5.50", corners: "أقل من 9.5 ركنية", cards: "أكثر من 4.5 بطاقات صراع آسيوي", gg: "✅ نعم" },
+            { id: 204, type: "free", home: "ليبيريا", away: "سيراليون", time: "05:00 م", probHome: 35, probDraw: 38, probAway: 27, market1: "تعادل أو فوز سيراليون (X2) | ODD: 1.48", market2: "إجمالي أهداف اللقاء تحت 2.5 | ODD: 1.55", correctScore: "النتيجة المتوقعة: 0 - 0 أو 1 - 1 | ODD: 5.20", corners: "أقل من 8.5 ركنية تكتيكية", cards: "أكثر من 4.5 بطاقات", gg: "✅ نعم" },
+            { id: 205, type: "free", home: "غينيا الاستوائية", away: "جزر القمر", time: "05:00 م", probHome: 58, probDraw: 27, probAway: 15, market1: "فوز غينيا الاستوائية (1) | ODD: 1.65", market2: "إجمالي الأهداف فوق 1.5 | ODD: 1.42", correctScore: "النتيجة المتوقعة: 2 - 0 | ODD: 5.80", corners: "أكثر من 8.5 ركنية لصالح غينيا", cards: "أقل من 4.5 بطاقات", gg: "❌ لا" },
+            { id: 206, type: "free", home: "المجر", away: "كازاخستان", time: "06:00 م", probHome: 65, probDraw: 22, probAway: 13, market1: "فوز المجر المباشر (1) | ODD: 1.50", market2: "المجر تسجل في الشوط الثاني بقوة | ODD: 1.75", correctScore: "النتيجة المقترحة: 2 - 0 أو 3 - 0 | ODD: 6.00", corners: "أكثر من 9.5 ركنية", cards: "أقل من 3.5 بطاقات", gg: "❌ لا" },
+            { id: 207, type: "free", home: "أذربيجان", away: "سان مارينو", time: "07:00 م", probHome: 90, probDraw: 8, probAway: 2, market1: "فوز أذربيجان هنديكاب -2.5 | ODD: 1.85", market2: "إجمالي أهداف المباراة فوق 3.5 | ODD: 2.10", correctScore: "النتيجة المقترحة: 4 - 0 أو 5 - 0 تدمير كامل | ODD: 5.00", corners: "أكثر من 10.5 ركنية ضغط كلي", cards: "أقل من 2.5 بطاقات صفراء", gg: "❌ لا" },
+            { id: 208, type: "free", home: "إثيوبيا", away: "مالاوي", time: "11:00 ص", probHome: 38, probDraw: 35, probAway: 27, market1: "فوز أو تعادل إثيوبيا (1X) | ODD: 1.40", market2: "مجموع أهداف اللقاء تحت 2.5 | ODD: 1.50", correctScore: "النتيجة المقترحة: 1 - 0 | ODD: 5.50", corners: "أقل من 8.5 ركنية", cards: "أكثر من 4.5 بطاقات", gg: "❌ لا" },
+            { id: 209, type: "free", home: "رواندا", away: "تنزانيا", time: "11:00 ص", probHome: 34, probDraw: 36, probAway: 30, market1: "تعادل حذر أو فوز رواندا (1X) | ODD: 1.45", market2: "مجموع أهداف الشوط الأول تحت 0.5 هدف | ODD: 2.20", correctScore: "النتيجة المتوقعة: 0 - 0 أو 1 - 0 | ODD: 4.80", corners: "أقل من 9.5 ركنية", cards: "أكثر من 3.5 بطاقات", gg: "❌ لا" },
+            { id: 210, type: "free", home: "بوتسوانا", away: "مولدوفا", time: "11:00 ص", probHome: 42, probDraw: 33, probAway: 25, market1: "فوز أو تعادل بوتسوانا (1X) | ODD: 1.35", market2: "إجمالي أهداف اللقاء تحت 2.5 | ODD: 1.45", correctScore: "النتيجة المقترحة: 1 - 0 | ODD: 5.00", corners: "أقل من 8.5 ركنية", cards: "أكثر من 4.5 بطاقات", gg: "❌ لا" },
+            { id: 211, type: "free", home: "الفلبين", away: "ميانمار", time: "12:30 م", probHome: 52, probDraw: 28, probAway: 20, market1: "فوز الفلبين المباشر (1) | ODD: 1.70", market2: "إجمالي الأهداف فوق 2.5 أهداف عشوائية | ODD: 1.85", correctScore: "النتيجة المقترحة: 2 - 1 أو 3 - 1 | ODD: 7.50", corners: "أكثر من 9.5 ركنية إجمالية", cards: "أكثر من 3.5 بطاقات حماسية", gg: "✅ نعم" },
+            { id: 212, type: "free", home: "الصين", away: "تايلاند", time: "12:35 م", probHome: 55, probDraw: 30, probAway: 15, market1: "فوز الصين المباشر (1) للأرض والجمهور | ODD: 1.65", market2: "مجموع أهداف اللقاء فوق 1.5 | ODD: 1.30", correctScore: "النتيجة المتوقعة: 2 - 1 | ODD: 7.50", corners: "أكثر من 8.5 ركنية لصالح الصين", cards: "أكثر من 4.5 بطاقات صراع آسيوي", gg: "✅ نعم" },
+            { id: 213, type: "free", home: "كمبوديا", away: "هونغ كونغ", time: "01:00 م", probHome: 18, probDraw: 27, probAway: 55, market1: "فوز هونغ كونغ المباشر (2) | ODD: 1.68", market2: "إجمالي أهداف هونغ كونغ فوق 1.5 أهداف | ODD: 1.80", correctScore: "النتيجة المتوقعة: 0 - 2 أو 1 - 2 لصالح الضيوف | ODD: 6.50", corners: "أكثر من 8.5 ركنية", cards: "أقل من 3.5 بطاقات صفراء", gg: "❌ لا" },
+            { id: 214, type: "free", home: "قرغيزستان", away: "فلسطين", time: "03:30 م", probHome: 30, probDraw: 35, probAway: 35, market1: "فوز أو تعادل فلسطين الفدائي (X2) | ODD: 1.48", market2: "إجمالي الأهداف في اللقاء تحت 2.5 | ODD: 1.65", correctScore: "النتيجة المتوقعة: 1 - 1 أو 0 - 1 لفلسطين | ODD: 6.00", corners: "أقل من 9.5 ركنية متبادلة", cards: "أكثر من 4.5 بطاقات حماسية", gg: "✅ نعم" },
+            { id: 215, type: "free", home: "روسيا البيضاء", away: "بوركينا فاسو", time: "05:30 م", probHome: 25, probDraw: 35, probAway: 40, market1: "فوز أو تعادل بوركينا فاسو (X2) | ODD: 1.45", market2: "إجمالي أهداف المباراة تحت 2.5 | ODD: 1.60", correctScore: "النتيجة المقترحة: 0 - 1 أو 1 - 1 | ODD: 5.50", corners: "أقل من 9.5 ركنية متبادلة", cards: "أكثر من 3.5 بطاقات", gg: "✅ نعم" }
         ];
 
-        const tomorrowMatches = [
-            { id: 201, type: "vip", home: "إسبانيا", away: "بيرو", time: "03:00 ص", probHome: 78, probDraw: 15, probAway: 7, market1: "💥 فوز إسبانيا المباشر مع الشوط الأول | ODD: 1.80", market2: "🔥 إسبانيا تسجل في كلا الشوطين (نعم) | ODD: 2.10", correctScore: "👑 النتيجة الدقيقة: 3 - 0 نظيفة للماتادور | ODD: 6.80", corners: "🚀 أكثر من 9.5 ركنية لصالح إسبانيا", cards: "🟨 أقل من 4.5 بطاقات", gg: "❌ لا" },
-            { id: 202, type: "vip", home: "روسيا البيضاء", away: "بوركينا فاسو", time: "05:30 م", probHome: 25, probDraw: 35, probAway: 40, market1: "💥 فوز أو تعادل بوركينا فاسو (X2) | ODD: 1.45", market2: "🔥 إجمالي أهداف المباراة تحت 2.5 | ODD: 1.60", correctScore: "👑 النتيجة الدقيقة الثابتة: 0 - 1 أو 1 - 1 | ODD: 5.50", corners: "🚀 أقل من 9.5 ركنية متبادلة", cards: "🟨 أكثر من 3.5 بطاقات", gg: "✅ نعم" },
-            { id: 203, type: "vip", home: "روسيا", away: "ترينيداد وتوباغو", time: "06:00 م", probHome: 72, probDraw: 18, probAway: 10, market1: "💥 فوز روسيا المباشر (1) هنديكاب -1 | ODD: 1.95", market2: "🔥 مجموع أهداف اللقاء فوق 2.5 | ODD: 1.70", correctScore: "👑 النتيجة الدقيقة: 3 - 1 أو 2 - 0 | ODD: 7.00", corners: "🚀 أكثر من 9.5 ركنية لروسيا", cards: "🟨 أقل من 3.5 بطاقات", gg: "✅ نعم" },
-            { id: 204, type: "vip", home: "أفريقيا الوسطى", away: "أنغولا", time: "11:00 ص", probHome: 20, probDraw: 35, probAway: 45, market1: "💥 فوز أنغولا المباشر (2) | ODD: 2.05", market2: "🔥 إجمالي أهداف أنغولا فوق 1.5 أهداف | ODD: 2.20", correctScore: "👑 النتيجة الدقيقة: 1 - 2 لصالح أنغولا | ODD: 8.50", corners: "🚀 أكثر من 8.5 ركنية", cards: "🟨 أكثر من 4.5 بطاقات حماسية", gg: "✅ نعم" },
-            { id: 205, type: "free", home: "أرمينيا", away: "مولدوفا", time: "04:00 م", probHome: 55, probDraw: 28, probAway: 17, market1: "فوز أرمينيا المباشر (1) | ODD: 1.75", market2: "إجمالي أهداف اللقاء فوق 1.5 | ODD: 1.40", correctScore: "النتيجة المتوقعة: 2 - 0 أو 2 - 1 | ODD: 6.00", corners: "أكثر من 8.5 ركنية", cards: "أكثر من 3.5 بطاقات", gg: "✅ نعم" },
-            { id: 206, type: "free", home: "طاجيكستان", away: "الهند", time: "04:00 م", probHome: 40, probDraw: 35, probAway: 25, market1: "فوز أو تعادل طاجيكستان (1X) | ODD: 1.38", market2: "مجموع أهداف الشوط الأول تحت 1.5 | ODD: 1.30", correctScore: "النتيجة المقترحة: 1 - 1 أو 1 - 0 | ODD: 5.50", corners: "أقل من 9.5 ركنية", cards: "أكثر من 4.5 بطاقات صراع آسيوي", gg: "✅ نعم" },
-            { id: 207, type: "free", home: "ليبيريا", away: "سيراليون", time: "05:00 م", probHome: 35, probDraw: 38, probAway: 27, market1: "تعادل أو فوز سيراليون (X2) | ODD: 1.48", market2: "إجمالي أهداف اللقاء تحت 2.5 | ODD: 1.55", correctScore: "النتيجة المتوقعة: 0 - 0 أو 1 - 1 | ODD: 5.20", corners: "أقل من 8.5 ركنية تكتيكية", cards: "أكثر من 4.5 بطاقات", gg: "✅ نعم" },
-            { id: 208, type: "free", home: "غينيا الاستوائية", away: "جزر القمر", time: "05:00 م", probHome: 58, probDraw: 27, probAway: 15, market1: "فوز غينيا الاستوائية (1) | ODD: 1.65", market2: "إجمالي الأهداف فوق 1.5 | ODD: 1.42", correctScore: "النتيجة المتوقعة: 2 - 0 | ODD: 5.80", corners: "أكثر من 8.5 ركنية لصالح غينيا", cards: "أقل من 4.5 بطاقات", gg: "❌ لا" },
-            { id: 209, type: "free", home: "المجر", away: "كازاخستان", time: "06:00 م", probHome: 65, probDraw: 22, probAway: 13, market1: "فوز المجر المباشر (1) | ODD: 1.50", market2: "المجر تسجل في الشوط الثاني بقوة | ODD: 1.75", correctScore: "النتيجة المقترحة: 2 - 0 أو 3 - 0 | ODD: 6.00", corners: "أكثر من 9.5 ركنية", cards: "أقل من 3.5 بطاقات", gg: "❌ لا" },
-            { id: 210, type: "free", home: "أذربيجان", away: "سان مارينو", time: "07:00 م", probHome: 90, probDraw: 8, probAway: 2, market1: "فوز أذربيجان هنديكاب -2.5 | ODD: 1.85", market2: "إجمالي أهداف المباراة فوق 3.5 | ODD: 2.10", correctScore: "النتيجة المقترحة: 4 - 0 أو 5 - 0 تدمير كامل | ODD: 5.00", corners: "أكثر من 10.5 ركنية ضغط كلي", cards: "أقل من 2.5 بطاقات صفراء", gg: "❌ لا" },
-            { id: 211, type: "free", home: "فانواتو", away: "فيجي", time: "05:30 ص", probHome: 20, probDraw: 30, probAway: 50, market1: "فوز فيجي المباشر (2) | ODD: 1.80", market2: "إجمالي أهداف اللقاء فوق 2.5 | ODD: 1.75", correctScore: "النتيجة المتوقعة: 1 - 2 أو 1 - 3 | ODD: 8.00", corners: "أكثر من 9.5 ركنية", cards: "أكثر من 3.5 بطاقات", gg: "✅ نعم" },
-            { id: 212, type: "free", home: "إثيوبيا", away: "مالاوي", time: "11:00 ص", probHome: 38, probDraw: 35, probAway: 27, market1: "فوز أو تعادل إثيوبيا (1X) | ODD: 1.40", market2: "مجموع أهداف اللقاء تحت 2.5 | ODD: 1.50", correctScore: "النتيجة المقترحة: 1 - 0 | ODD: 5.50", corners: "أقل من 8.5 ركنية", cards: "أكثر من 4.5 بطاقات", gg: "❌ لا" },
-            { id: 213, type: "free", home: "رواندا", away: "تنزانيا", time: "11:00 ص", probHome: 34, probDraw: 36, probAway: 30, market1: "تعادل حذر أو فوز رواندا (1X) | ODD: 1.45", market2: "مجموع أهداف الشوط الأول تحت 0.5 هدف | ODD: 2.20", correctScore: "النتيجة المتوقعة: 0 - 0 أو 1 - 0 | ODD: 4.80", corners: "أقل من 9.5 ركنية", cards: "أكثر من 3.5 بطاقات", gg: "❌ لا" },
-            { id: 214, type: "free", home: "بوتسوانا", away: "النيجر", time: "11:00 ص", probHome: 42, probDraw: 33, probAway: 25, market1: "فوز أو تعادل بوتسوانا (1X) | ODD: 1.35", market2: "إجمالي أهداف اللقاء تحت 2.5 | ODD: 1.45", correctScore: "النتيجة المقترحة: 1 - 0 | ODD: 5.00", corners: "أقل من 8.5 ركنية", cards: "أكثر من 4.5 بطاقات", gg: "❌ لا" },
-            { id: 215, type: "free", home: "الفلبين", away: "ميانمار", time: "12:30 م", probHome: 52, probDraw: 28, probAway: 20, market1: "فوز الفلبين المباشر (1) | ODD: 1.70", market2: "إجمالي الأهداف فوق 2.5 أهداف عشوائية | ODD: 1.85", correctScore: "النتيجة المقترحة: 2 - 1 أو 3 - 1 | ODD: 7.50", corners: "أكثر من 9.5 ركنية إجمالية", cards: "أكثر من 3.5 بطاقات حماسية", gg: "✅ نعم" },
-            { id: 216, type: "free", home: "الصين", away: "تايلاند", time: "12:35 م", probHome: 55, probDraw: 30, probAway: 15, market1: "فوز الصين المباشر (1) للأرض والجمهور | ODD: 1.65", market2: "مجموع أهداف اللقاء فوق 1.5 | ODD: 1.30", correctScore: "النتيجة المتوقعة: 2 - 1 | ODD: 7.50", corners: "أكثر من 8.5 ركنية لصالح الصين", cards: "أكثر من 4.5 بطاقات صراع آسيوي", gg: "✅ نعم" },
-            { id: 217, type: "free", home: "کمبوديا", away: "هونغ كونغ", time: "01:00 م", probHome: 18, probDraw: 27, probAway: 55, market1: "فوز هونغ كونغ المباشر (2) | ODD: 1.68", market2: "إجمالي أهداف هونغ كونغ فوق 1.5 أهداف | ODD: 1.80", correctScore: "النتيجة المتوقعة: 0 - 2 أو 1 - 2 لصالح الضيوف | ODD: 6.50", corners: "أكثر من 8.5 ركنية", cards: "أقل من 3.5 بطاقات صفراء", gg: "❌ لا" },
-            { id: 218, type: "free", home: "قرغيزستان", away: "فلسطين", time: "03:30 م", probHome: 30, probDraw: 35, probAway: 35, market1: "فوز أو تعادل فلسطين الفدائي (X2) | ODD: 1.48", market2: "إجمالي الأهداف في اللقاء تحت 2.5 | ODD: 1.65", correctScore: "النتيجة المتوقعة: 1 - 1 أو 0 - 1 لفلسطين | ODD: 6.00", corners: "أقل من 9.5 ركنية متبادلة", cards: "أكثر من 4.5 بطاقات حماسية", gg: "✅ نعم" }
-        ];
-
-        const june9Matches = [
-            { id: 301, type: "vip", home: "السنغال", away: "السعودية", time: "12:00 ص", probHome: 55, probDraw: 30, probAway: 15, market1: "💥 فوز السنغال المباشر (1) بفضل القوة البدنية | ODD: 1.95", market2: "🔥 إجمالي أهداف المباراة فوق 1.5 أهداف | ODD: 1.40", correctScore: "👑 النتيجة الدقيقة المستهدفة بالمليمتر: 2 - 0 أو 2 - 1 | ODD: 7.80", corners: "🚀 أكثر من 9.5 ركنية ضغط أفريقي ساخن", cards: "🟨 أكثر من 3.5 بطاقات صفراء", gg: "✅ نعم (صراع قوي من الطرفين)" },
-            { id: 302, type: "vip", home: "الأرجنتين", away: "أيسلندا", time: "02:00 ص", probHome: 82, probDraw: 13, probAway: 5, market1: "💥 فوز الأرجنتين هنديكاب -1.5 (طوفان تكتيكي) | ODD: 1.75", market2: "🔥 الأرجنتين تسجل في الشوطين (نعم) | ODD: 1.90", correctScore: "👑 النتيجة الدقيقة الثابتة: 3 - 0 أو 4 - 0 للتانغو | ODD: 6.00", corners: "🚀 أكثر من 10.5 ركنية سيطرة أرجنتينية كاملة", cards: "🟨 أقل من 3.5 بطاقات صفراء", gg: "❌ لا (كلين شيت للأرجنتين)" },
+        // 📅 2. جدول يوم الأربعاء
+        const wednesdayMatches = [
+            { id: 301, type: "vip", home: "السنغال", away: "السعودية", time: "12:00 ص", probHome: 55, probDraw: 30, probAway: 15, market1: "💥 فوز السنغال المباشر (1) بفضل القوة البدنية | ODD: 1.95", market2: "🔥 إجمالي أهداف المباراة فوق 1.5 أهداف | ODD: 1.40", correctScore: "👑 النتيجة الدقيقة المستهدفة بالمليمتر: 2 - 0 أو 2 - 1 | ODD: 7.80", corners: "🚀 أكثر من 9.5 ركنية ضغط أفريقي ساخن", cards: "🟨 أكثر من 3.5 بطاقات صفراء", gg: "✅ نعم" },
+            { id: 302, type: "vip", home: "الأرجنتين", away: "أيسلندا", time: "02:00 ص", probHome: 82, probDraw: 13, probAway: 5, market1: "💥 فوز الأرجنتين هنديكاب -1.5 (طوفان تكتيكي) | ODD: 1.75", market2: "🔥 الأرجنتين تسجل في الشوطين (نعم) | ODD: 1.90", correctScore: "👑 النتيجة الدقيقة الثابتة: 3 - 0 أو 4 - 0 للتانغو | ODD: 6.00", corners: "🚀 أكثر من 10.5 ركنية سيطرة أرجنتينية كاملة", cards: "🟨 أقل من 3.5 بطاقات صفراء", gg: "❌ لا" },
             { id: 303, type: "vip", home: "البرتغال", away: "نيجيريا", time: "08:45 م", probHome: 75, probDraw: 17, probAway: 8, market1: "💥 فوز البرتغال المباشر مع الشوط الأول (1/1) | ODD: 1.85", market2: "🔥 مجموع أهداف البرتغال فوق 2.5 أهداف منفردة | ODD: 2.30", correctScore: "👑 النتيجة الدقيقة: 3 - 1 أو 3 - 0 قصف برتغالي | ODD: 7.20", corners: "🚀 أكثر من 9.5 ركنية طوفان العرضيات", cards: "🟨 أقل من 4.5 بطاقات", gg: "✅ نعم" },
             { id: 304, type: "vip", home: "إنجلترا", away: "كوستاريكا", time: "09:00 م", probHome: 80, probDraw: 15, probAway: 5, market1: "💥 فوز إنجلترا المباشر (1) هنديكاب -1 | ODD: 1.65", market2: "🔥 إجمالي أهداف اللقاء فوق 2.5 | ODD: 1.60", correctScore: "👑 النتيجة الدقيقة: 3 - 0 نظيفة للأسود الثلاثة | ODD: 5.50", corners: "🚀 أكثر من 10.5 ركنية هجوم إنجليزي مكثف", cards: "🟨 أقل من 3.5 بطاقات", gg: "❌ لا" },
-            { id: 305, type: "vip", home: "بوليفيا", away: "الجزائر", time: "01:00 ص", probHome: 15, probDraw: 25, probAway: 60, market1: "💥 فوز محاربي الصحراء المباشر (2) كاش في كاش | ODD: 1.85", market2: "🔥 إجمالي أهداف الجزائر فوق 1.5 أهداف | ODD: 2.10", correctScore: "👑 النتيجة الدقيقة: 0 - 2 أو 1 - 3 خضرة يا زينة | ODD: 7.50", corners: "🚀 أكثر من 9.5 ركنية (هجوم جزائري ساحق)", cards: "ية أكثر من 4.5 بطاقات حماسية", gg: "✅ نعم" },
+            { id: 305, type: "vip", home: "بوليفيا", away: "الجزائر", time: "01:00 ص", probHome: 15, probDraw: 25, probAway: 60, market1: "💥 فوز محاربي الصحراء المباشر (2) كاش في كاش | ODD: 1.85", market2: "🔥 إجمالي أهداف الجزائر فوق 1.5 أهداف | ODD: 2.10", correctScore: "👑 النتيجة الدقيقة: 0 - 2 أو 1 - 3 خضرة يا زينة | ODD: 7.50", corners: "🚀 أكثر من 9.5 ركنية (هجوم جزائري ساحق)", cards: "🟨 أكثر من 4.5 بطاقات حماسية", gg: "✅ نعم" },
             { id: 306, type: "free", home: "فنزويلا", away: "العراق", time: "02:00 ص", probHome: 45, probDraw: 35, probAway: 20, market1: "فوز أو تعادل فنزويلا (1X) | ODD: 1.42", market2: "إجمالي أهداف اللقاء تحت 2.5 أهداف تكتيكية | ODD: 1.65", correctScore: "النتيجة المتوقعة: 1 - 1 أو 1 - 0 | ODD: 5.80", corners: "أقل من 9.5 ركنية متبادلة", cards: "أكثر من 4.5 بطاقات اندفاع بدني", gg: "✅ نعم" }
         ];
 
-        // دالة إنشاء الجداول ونظام حجب التوقعات لحين النقر عليها
+        // 📅 3. جدول يوم الخميس
+        const thursdayMatches = [
+            { id: 101, type: "vip", home: "المكسيك", away: "جنوب أفريقيا", time: "08:30 م", probHome: 65, probDraw: 23, probAway: 12, market1: "💥 فوز المكسيك المباشر (1) مع الشوط الأول | ODD: 1.80", market2: "🔥 إجمالي أهداف المباراة فوق 2.5 أهداف | ODD: 1.70", correctScore: "👑 النتيجة الدقيقة الثابتة: 3 - 1 أو 2 - 0 للمكسيك | ODD: 6.50", corners: "🚀 أكثر من 9.5 ركنية للمكسيك", cards: "🟨 أكثر من 3.5 بطاقات صراع بدني", gg: "✅ نعم" }
+        ];
+
+        // 📅 4. جدول يوم الجمعة
+        const fridayMatches = [
+            { id: 401, type: "vip", home: "كوريا الجنوبية", away: "التشيك", time: "04:30 م", probHome: 48, probDraw: 30, probAway: 22, market1: "💥 فوز كوريا الجنوبية (1) أداء سريع للمشمش | ODD: 2.10", market2: "🔥 إجمالي أهداف اللقاء فوق 1.5 | ODD: 1.35", correctScore: "👑 النتيجة الدقيقة: 2 - 1 أو 2 - 0 لكوريا | ODD: 8.00", corners: "🚀 أكثر من 9.5 ركنية سرعة الأطراف", cards: "🟨 أقل من 3.5 بطاقات", gg: "✅ نعم" },
+            { id: 402, type: "free", home: "كندا", away: "البوسنة والهرسك", time: "07:00 م", probHome: 52, probDraw: 28, probAway: 20, market1: "فوز أو تعادل كندا (1X) لقوة الاندفاع | ODD: 1.38", market2: "مجموع أهداف الشوط الثاني فوق 0.5 | ODD: 1.30", correctScore: "النتيجة المقترحة: 1 - 0 أو 2 - 1 | ODD: 6.00", corners: "أكثر من 8.5 ركنية للمباراة", cards: "أكثر من 4.5 بطاقات صراع بدني", gg: "✅ نعم" }
+        ];
+
+        // 📅 5. جدول يوم السبت
+        const saturdayMatches = [
+            { id: 501, type: "vip", home: "البرازيل", away: "المغرب", time: "09:00 م", probHome: 58, probDraw: 25, probAway: 17, market1: "💥 فوز البرازيل المباشر (1) سهرة نارية | ODD: 1.75", market2: "🔥 كلا الفريقين يسجلان (GG) قوة هجومية | ODD: 1.90", correctScore: "👑 النتيجة الدقيقة: 2 - 1 أو 3 - 1 للسليساو | ODD: 7.50", corners: "🚀 أكثر من 10.5 ركنية ضغط متبادل وعالٍ", cards: "🟨 أكثر من 3.5 بطاقات", gg: "✅ نعم" },
+            { id: 502, type: "vip", home: "أمريكا", away: "باراغواي", time: "11:30 م", probHome: 60, probDraw: 25, probAway: 15, market1: "💥 فوز أمريكا المباشر (1) على أرضها | ODD: 1.68", market2: "🔥 إجمالي أهداف أمريكا فوق 1.5 أهداف | ODD: 1.85", correctScore: "👑 النتيجة الدقيقة: 2 - 0 نظيفة لأمريكا | ODD: 6.20", corners: "🚀 أكثر من 9.5 ركنية ضغط مبكر", cards: "🟨 أكثر من 4.5 بطاقات لاتينية", gg: "❌ لا" },
+            { id: 503, type: "free", home: "سويسرا", away: "قطر", time: "06:00 م", probHome: 65, probDraw: 22, probAway: 13, market1: "فوز سويسرا المباشر (1) تنظيم أوروبي | ODD: 1.50", market2: "إجمالي أهداف اللقاء فوق 2.5 أهداف | ODD: 1.70", correctScore: "النتيجة المتوقعة: 3 - 0 أو 2 - 1 | ODD: 5.80", corners: "أقل من 9.5 ركنية منظم", cards: "أقل من 3.5 بطاقات صفراء", gg: "❌ لا" }
+        ];
+
+        // 📅 6. جدول يوم الأحد
+        const sundayMatches = [
+            { id: 601, type: "vip", home: "ألمانيا", away: "كوراساو", time: "04:00 م", probHome: 92, probDraw: 6, probAway: 2, market1: "💥 ألمانيا هنديكاب -2.5 (قصف كلي للماكينات) | ODD: 1.60", market2: "🔥 مجموع أهداف الشوط الأول فوق 1.5 أهداف | ODD: 1.95", correctScore: "👑 النتيجة الدقيقة: 4 - 0 أو 5 - 0 تدمير كامل | ODD: 5.50", corners: "🚀 أكثر من 10.5 ركنية هجوم ساحق من الأطراف", cards: "🟨 أقل من 2.5 بطاقات صفراء", gg: "❌ لا" },
+            { id: 602, type: "vip", home: "هولندا", away: "اليابان", time: "07:45 م", probHome: 54, probDraw: 26, probAway: 20, market1: "💥 فوز هولندا المباشر (1) اندفاع تكتيكي شامل | ODD: 1.85", market2: "🔥 إجمالي أهداف المباراة فوق 2.5 أهداف | ODD: 1.72", correctScore: "👑 النتيجة الدقيقة: 2 - 1 أو 3 - 1 قمة نارية | ODD: 7.00", corners: "🚀 أكثر من 9.5 ركنية صراع قوي", cards: "🟨 أكثر من 3.5 بطاقات", gg: "✅ نعم" },
+            { id: 603, type: "vip", home: "تركيا", away: "أستراليا", time: "08:00 م", probHome: 52, probDraw: 28, probAway: 20, market1: "💥 فوز تركيا المباشر (1) للأرض والحماس | ODD: 1.90", market2: "🔥 مجموع أهداف اللقاء تحت 2.5 هدف تكتيكي | ODD: 1.75", correctScore: "👑 النتيجة الدقيقة الثابتة: 1 - 0 أو 2 - 0 لتركيا | ODD: 6.80", corners: "🚀 أقل من 9.5 ركنية انحصار في الوسط", cards: "🟨 أكثر من 4.5 بطاقات صراع بدني قوي", gg: "❌ لا" },
+            { id: 604, type: "free", home: "الإكوادور", away: "كوت ديفوار", time: "09:30 م", probHome: 40, probDraw: 35, probAway: 25, market1: "فوز أو تعادل الإكوادور (1X) صلابة لاتينية | ODD: 1.40", market2: "إجمالي أهداف المباراة تحت 2.5 أهداف | ODD: 1.55", correctScore: "النتيجة المقترحة: 1 - 1 أو 1 - 0 | ODD: 5.20", corners: "أقل من 9.5 ركنية متبادلة", cards: "أكثر من 4.5 بطاقات اندفاع بدني أفريقي", gg: "✅ نعم" },
+            { id: 605, type: "free", home: "هايتي", away: "اسكتلندا", time: "02:00 م", probHome: 15, probDraw: 25, probAway: 60, market1: "فوز اسكتلندا المباشر (2) اندفاع بريطاني | ODD: 1.55", market2: "إجمالي أهداف اسكتلندا فوق 1.5 أهداف | ODD: 1.80", correctScore: "النتيجة المتوقعة: 0 - 2 لصالح الضيوف | ODD: 6.50", corners: "أكثر من 8.5 ركنية لاسكتلندا", cards: "أقل من 3.5 بطاقات صفراء", gg: "❌ لا" }
+        ];
+
         function generateTable(matchesArray, containerId, countId) {
             const container = document.getElementById(containerId);
             container.innerHTML = '';
@@ -337,7 +362,7 @@
                 let card = document.createElement('div');
                 card.className = 'match-card';
                 
-                let badge = match.type === "vip" ? '<span class="vip-card-badge">👑 SUPER VIP (توصية مؤكدة)</span>' : '<span class="free-card-badge">مجاني قراءات قوية</span>';
+                let badge = match.type === "vip" ? '<span class="vip-card-badge">👑 SUPER VIP</span>' : '<span class="free-card-badge">مجاني مجرب</span>';
 
                 let cardHTML = `
                     <div class="match-header">
@@ -347,23 +372,19 @@
                 `;
 
                 if (match.type === "vip" && !isGlobalVipUnlocked) {
-                    // إذا لم يتم تفعيل الكود، تظل تظهر النافذة المقفلة العادية للـ VIP
                     cardHTML += `
                         <div class="vip-lock-container">
-                            <p style="margin: 0 0 5px 0; font-size: 0.9rem; color: #fff; font-weight: bold;">📊 التوقع السري ذو المعامل العالي (HIGH ODDS) جاهز ومغلق</p>
+                            <p style="margin: 0 0 5px 0; font-size: 0.9rem; color: #fff; font-weight: bold;">📊 التوقع السري ذو المعامل العالي مغلق</p>
                             <p style="margin: 0 0 15px 0; font-size: 0.8rem; color: var(--text-muted);">اضغط للتعرف على كود فتح التذاكر والنتائج الدقيقة فوراً</p>
                             <button class="btn-view-predictions" onclick="openVipModal()">عرض التوقعات الفنية المدمرة 🔓</button>
                         </div>
                     `;
                 } else {
-                    // إذا كان الكود مفعلاً، أو كانت المباراة مجانية
-                    // نتحقق أولاً هل قام المستخدم بفتح تفاصيل هذا الماتش بالتحديد؟
                     if (revealedMatches[match.id]) {
-                        // إذا ضغط عليه تظهر التفاصيل كاملة
                         cardHTML += `<div class="markets-grid">`;
                         cardHTML += `
                             <div class="probability-container">
-                                <span class="prob-title">📊 دقة حسابات الرادار ونسب الفوز المئوية الذكية:</span>
+                                <span class="prob-title">📊 دقة حسابات الرادار ونسب الفوز المئوية:</span>
                                 <div class="prob-bar-wrapper">
                                     <div class="prob-home" style="width: ${match.probHome}%">فوز ${match.home} (${match.probHome}%)</div>
                                     <div class="prob-draw" style="width: ${match.probDraw}%">تعادل</div>
@@ -379,7 +400,6 @@
                         cardHTML += createMarketItemHTML("💎 النتيجة الدقيقة المستهدفة بالمليمتر (Correct Score):", match.correctScore, true);
                         cardHTML += `</div>`;
                     } else {
-                        // إذا لم يضغط بعد، يظهر له صندوق حظر مخفف يطلب منه الدخول أولاً
                         let buttonText = match.type === "vip" ? "اضغط لعرض التوقعات الفنية 🔓" : "عرض التحليل المجاني 👁️";
                         let extraBtnClass = match.type === "vip" ? "vip-reveal" : "";
                         cardHTML += `
@@ -394,13 +414,12 @@
                 container.appendChild(card);
             });
 
-            document.getElementById(countId).innerText = matchesArray.length + " قمم نارية مدروسة";
+            document.getElementById(countId).innerText = matchesArray.length + " مواجهات";
         }
 
-        // دالة فتح مباراة محددة عند الضغط عليها
         function revealSingleMatch(matchId) {
             revealedMatches[matchId] = true;
-            displayAllTables(); // إعادة رندرة الجداول لتحديث المباراة المفتوحة
+            displayAllTables();
         }
 
         function createMarketItemHTML(title, value, isScore = false) {
@@ -415,16 +434,40 @@
         }
 
         function displayAllTables() {
-            generateTable(todayMatches, 'today-matches-container', 'today-count');
-            generateTable(tomorrowMatches, 'tomorrow-matches-container', 'tomorrow-count');
-            generateTable(june9Matches, 'june9-matches-container', 'june9-count');
+            generateTable(tuesdayMatches, 'tuesday-matches-container', 'tuesday-count');
+            generateTable(wednesdayMatches, 'wednesday-matches-container', 'wednesday-count');
+            generateTable(thursdayMatches, 'thursday-matches-container', 'thursday-count');
+            generateTable(fridayMatches, 'friday-matches-container', 'friday-count');
+            generateTable(saturdayMatches, 'saturday-matches-container', 'saturday-count');
+            generateTable(sundayMatches, 'sunday-matches-container', 'sunday-count');
         }
 
         function openVipModal() { document.getElementById('vipModal').style.display = 'flex'; }
         function closeVipModal() { document.getElementById('vipModal').style.display = 'none'; }
 
-        // دالة التفعيل المحدثة لحساب العداد التنازلي الحقيقي للاشتراك
         let subscriptionInterval;
+
+        function checkSavedSubscription() {
+            const savedEndTime = localStorage.getItem('vip_end_time');
+            const savedPackageName = localStorage.getItem('vip_package_name');
+
+            if (savedEndTime && savedPackageName) {
+                const now = Math.floor(Date.now() / 1000);
+                let remainingSeconds = parseInt(savedEndTime) - now;
+
+                if (remainingSeconds > 0) {
+                    isGlobalVipUnlocked = true;
+                    displayAllTables();
+                    document.getElementById('keyCode').disabled = true;
+                    document.querySelector('.activation-btn').disabled = true;
+                    startSubscriptionCountdown(savedPackageName, remainingSeconds);
+                } else {
+                    localStorage.removeItem('vip_end_time');
+                    localStorage.removeItem('vip_package_name');
+                }
+            }
+        }
+
         function checkActivationCode() {
             const inputCode = document.getElementById('keyCode').value.trim().toUpperCase();
             const statusMsg = document.getElementById('statusMsg');
@@ -435,15 +478,18 @@
                 statusMsg.innerText = `✅ تم التفعيل بنجاح! باقة [ ${codeData.name} ] نشطة الآن.`;
                 
                 isGlobalVipUnlocked = true;
-                displayAllTables(); // تحديث الجداول ليتمكن من الضغط عليها لفتح التوقعات
+                displayAllTables();
                 
-                // إغلاق خانات الإدخال
                 document.getElementById('keyCode').disabled = true;
                 document.querySelector('.activation-btn').disabled = true;
 
-                // تشغيل وإظهار العداد التنازلي الخاص بالاشتراك
-                setupSubscriptionCountdown(codeData.name, codeData.hours);
+                const durationSeconds = codeData.hours * 3600;
+                const endTimeTimestamp = Math.floor(Date.now() / 1000) + durationSeconds;
+                
+                localStorage.setItem('vip_end_time', endTimeTimestamp);
+                localStorage.setItem('vip_package_name', codeData.name);
 
+                startSubscriptionCountdown(codeData.name, durationSeconds);
             } else {
                 statusMsg.style.color = "var(--live-red)";
                 statusMsg.innerText = "❌ كود التفعيل خاطئ، مستخدم سابقاً أو منتهي الصلاحية!";
@@ -451,8 +497,7 @@
             }
         }
 
-        // دالة تشغيل العداد التنازلي الفعلي للاشتراك بالثواني والدقائق والأيام
-        function setupSubscriptionCountdown(packageName, hoursDuration) {
+        function startSubscriptionCountdown(packageName, totalSeconds) {
             const infoBox = document.getElementById('subInfoBox');
             const subTitle = document.getElementById('subTitle');
             const subCountdown = document.getElementById('subCountdown');
@@ -460,33 +505,38 @@
             subTitle.innerText = `👑 حالة الاشتراك: ${packageName} نشط`;
             infoBox.style.display = 'block';
 
-            // حساب وقت النهاية الإجمالي بناءً على الساعات المحددة للكود
-            let totalSeconds = hoursDuration * 3600;
-
             if (subscriptionInterval) clearInterval(subscriptionInterval);
 
             subscriptionInterval = setInterval(function() {
-                if (totalSeconds <= 0) {
+                const savedEndTime = localStorage.getItem('vip_end_time');
+                if (!savedEndTime) {
+                    clearInterval(subscriptionInterval);
+                    return;
+                }
+                
+                const now = Math.floor(Date.now() / 1000);
+                let currentRemaining = parseInt(savedEndTime) - now;
+
+                if (currentRemaining <= 0) {
                     clearInterval(subscriptionInterval);
                     subCountdown.innerText = "❌ انتهت صلاحية الاشتراك الحالي!";
                     subCountdown.style.color = "var(--live-red)";
+                    localStorage.removeItem('vip_end_time');
+                    localStorage.removeItem('vip_package_name');
                     isGlobalVipUnlocked = false;
                     displayAllTables();
                     return;
                 }
 
-                totalSeconds--;
-
-                let d = Math.floor(totalSeconds / (3600 * 24));
-                let h = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-                let m = Math.floor((totalSeconds % 3600) / 60);
-                let s = totalSeconds % 60;
+                let d = Math.floor(currentRemaining / (3600 * 24));
+                let h = Math.floor((currentRemaining % (3600 * 24)) / 3600);
+                let m = Math.floor((currentRemaining % 3600) / 60);
+                let s = currentRemaining % 60;
 
                 subCountdown.innerText = `${d} يوم و ${h} ساعة و ${m} دقيقة و ${s} ثانية`;
             }, 1000);
         }
 
-        // عداد الحجز الترويجي العلوي
         function startTimer() {
             let hours = 1, minutes = 42, seconds = 25;
             setInterval(function() {
@@ -504,6 +554,7 @@
         }
 
         window.onload = function() {
+            checkSavedSubscription(); 
             displayAllTables();
             startTimer();
             window.onclick = function(event) {
